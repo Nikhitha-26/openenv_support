@@ -1,3 +1,14 @@
+---
+title: Support Ticket Resolver OpenEnv
+emoji: 🎫
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+tags:
+  - openenv
+---
+
 # 🎫 Support Ticket Resolver — OpenEnv
 
 > A production-grade customer support triage environment for benchmarking LLM agents on multi-step classification, knowledge-base lookup, policy-aware escalation, and empathetic response drafting.
