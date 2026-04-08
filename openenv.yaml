@@ -1,0 +1,64 @@
+name: support-ticket-resolver-openenv
+description: >
+  A realistic customer support ticket triage and resolution environment for
+  benchmarking LLM agents on multi-step classification, knowledge-base lookup,
+  policy-aware escalation, and empathetic response drafting.
+version: 0.2.0
+author: hackathon-team
+tags:
+  - openenv
+  - customer-support
+  - triage
+  - nlp
+  - multi-turn
+  - classification
+
+tasks:
+  - name: easy_triage
+    description: Classify a simple billing/refund ticket and resolve with a canned response.
+    difficulty: easy
+    max_steps: 6
+
+  - name: medium_kb_reply
+    description: Search a knowledge base, optionally ask one clarification, draft a personalised reply.
+    difficulty: medium
+    max_steps: 8
+
+  - name: hard_policy_escalation
+    description: >
+      Resolve a complex multi-turn thread respecting refund-limit policies,
+      angry-customer tone, and escalation rules.
+    difficulty: hard
+    max_steps: 12
+
+observation_space:
+  type: object
+  fields:
+    - ticket_id
+    - subject
+    - description
+    - category
+    - priority
+    - status
+    - conversation_history
+    - internal_notes
+    - kb_results
+    - available_actions
+    - step_count
+
+action_space:
+  type: discriminated_union
+  actions:
+    - classify_ticket
+    - search_kb
+    - ask_clarification
+    - draft_response
+    - resolve
+    - escalate
+    - add_internal_note
+
+reward:
+  type: dense
+  range: [-1.0, 1.0]
+
+entrypoint: server.py
