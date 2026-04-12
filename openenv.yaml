@@ -61,4 +61,4 @@ reward:
   type: dense
   range: [-1.0, 1.0]
 
-entrypoint: server.py
+entrypoint: server/app.py
